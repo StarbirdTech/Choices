@@ -45,11 +45,14 @@ class LineGraph {
     this.data = data;
     this.coords = [];
     this.showPoints = showPoints;
+    this.origin = {x: 0, y: 0};
+    this.width = width;
+    this.height = height;
   }
   setup() {
     for (let i = 0; i < 101; i++) {
-      this.coords.push(this.data[i]*2);
-      this.coords.push(map(i, 0, 100, 0, height));
+      this.coords.push(this.data[i]*2); // X
+      this.coords.push(map(i, 0, 100, this.origin.y, this.height)); // Y
     }
   }
   draw() {
@@ -66,5 +69,9 @@ class LineGraph {
       }
     }
     endShape();
+    this.showBoundingBox();
+  }
+  showBoundingBox() {
+    rect(this.origin.x, this.origin.y, this.width, this.height)
   }
 }

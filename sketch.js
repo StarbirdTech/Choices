@@ -5,18 +5,19 @@ let sliderCounter = [];
 
 function setup()
 {
+  // fill sliderCounter with mock data
   for (let i = 0; i < 101; i++) {
     sliderCounter.push(50);
   }
   createCanvas(600, 600);
   sm = new SceneManager();
-  //sm.addScene( endScreen );
+  sm.addScene( endScreen );
   sm.addScene ( menu );
   sm.addScene ( level1 );
   sm.addScene ( level2 );
   sm.addScene ( level3 );
   sm.addScene ( level4 );
-  sm.addScene ( endScreen );
+  //sm.addScene ( endScreen );
   sm.showNextScene();
 }
 
