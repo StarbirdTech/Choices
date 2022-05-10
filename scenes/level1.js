@@ -52,5 +52,5 @@ function level1() {
       }
     }
     
-    this.mousePressed = function() {button.clicked(false);}
+    this.mousePressed = function() {button.clicked();}
   }

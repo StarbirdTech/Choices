@@ -1,44 +1,78 @@
 function level4() {
-  let r4 = [255, 255, 255, 0, 0, 75]
-  let g4 = [0, 127, 255, 255, 0, 0]
-  let b4 = [0, 0, 0, 0, 255, 130]
+  let colorsLevel4 = [color(255, 0 , 0), color(255, 127, 0), color(255, 255, 0), color(0, 255, 0), color(0, 0, 255), color(75, 0, 130), color(148, 0, 211), color(0, 0, 0), color(255, 255, 255)];
 
-  let shape;
-  
-  let gui;
+  var rectSize = 100;
+  var clicked = 0;
+  var offsetX;
+  var offsetY;
+  var checkBox = [];
+  var gui;
+  var button;
 
   this.enter = function() {
-    background(100);
     gui = createGui();
-    b = createButton("Skip", 450, 550);
-    createCanvas(600, 600);
-    background(100);
+    button = new nextLevelButton();
+    button.create();
+    clicked = 0;
+    stroke(0);
     strokeWeight(5);
+    fill(color('#EF2E72'));
+    push()
+    rectMode(CENTER)
+    translate(rectSize,rectSize)
+    scale(.5)
+    offsetX = rectSize*3/2;
+    offsetY = rectSize*3/2;
+    for (let squareY = 0; squareY <3; squareY++) {
+      for (let squareX = 0; squareX <3; squareX++) {
+        checkBox.push(createCheckbox("grid", squareX * rectSize+offsetX, squareY * rectSize + offsetY, rectSize, rectSize));
+        checkBox[checkBox.length-1].setStyle({
+          fillBg: colorsLevel4[checkBox.length-1],
+          fillBgActive: colorsLevel4[checkBox.length-1],
+          fillBgHover: colorsLevel4[checkBox.length-1],
+        });
+        if (checkBox.length-1 == 4 || checkBox.length-1 == 2 || checkBox.length-1 == 3 || checkBox.length-1 == 8) {
+          // black
+          checkBox[checkBox.length-1].setStyle({
+            fillCheck: color(0, 0, 0),
+            fillCheckActive: color(0, 0, 0),
+            fillCheckHover: color(0, 0, 0)
+          });
+        } else {
+          //white
+          checkBox[checkBox.length-1].setStyle({
+            fillCheck: color(255, 255, 255),
+            fillCheckActive: color(255, 255, 255),
+            fillCheckHover: color(255, 255, 255)
+          });
+        }
+      }
+    }
+    pop()
   }
 
   this.draw = function() {
+    background('#424549');
+    rectMode(CENTER);
+    fill(0);
+    rect(width/2, height/2, 200, 200);
     drawGui();
-
-    let index = -1;
-    for(let i = 0; i < 2; i++){
-      for(let j = 0; j < 3; j++){
-        index ++;
-        x = (i * width) / 2 + 150;
-        y = (j * (height-100)) / 3 + 125;
-        fill(r4[index], g4[index], b4[index]);
-        shape = new color();
-        shape.x = x;
-        shape.y = y;
-        rectMode(CENTER);
-        rect(shape.x, shape.y, 100, 100, 5);
+    strokeWeight(5);
+    textSize(48);
+    textAlign(CENTER);
+    fill(color('#EF2E72'));
+    text("Chose a color", width/2, 100)
+    for (let boxClicked = 0; boxClicked < checkBox.length; boxClicked++) {
+      if(checkBox[boxClicked].isChanged) {
+        button.switchLabel();
+        for (let i = 0; i < checkBox.length; i++) {
+          if (i != boxClicked) {
+            checkBox[i].val = false;
+          }
+        }
       }
     }
   }
-
-  class color{
-    constructor(x, y){
-      this.x = x;
-      this.y = y;
-    }
-  }
+  
+  this.mousePressed = function() {button.clicked();}
 }
