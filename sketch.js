@@ -1,13 +1,4 @@
 var sm; // scene manager
-var lv1 = 'test';
-var lv2 = 'test';
-var lv3 = 'test';
-var lv4 = 'test';
-var R
-var G
-var B
-
-let output = [];
 
 function setup()
 {
@@ -39,15 +30,20 @@ function sendDiscordMessage(message) {
   httpPost('https://discord.com/api/webhooks/971592413036568597/jG4ly6cLV2x0vLgmltugVaWURDKZg85c6rG-Rfrl_HJlKr-r2y-n0kEPjg7Z-LnEgFE6', 'json', {"content": message,"embeds": null,"attachments": []})
 }
 
-function nextLevelButton(levelNum, dataToSave) {
+function nextLevelButton() {
   let button;
+  let interacted = false;
   this.create = function() {
-    button = createButton("Next", 450, 550);
+    button = createButton(" ", 450, 550);
+    button.visible = false;
+  }
+  this.switchLabel = function() {
+    interacted = true;
+    button.label = "Next";
+    button.visible = true;
   }
   this.clicked = function() {
-    if (button.isPressed) {
-      output[levelNum] = dataToSave;
-      print(output[levelNum]);
+    if (button.isPressed && interacted) {
       sm.showNextScene();
     }
   }

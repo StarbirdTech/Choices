@@ -42,6 +42,7 @@ function level1() {
       text("Chose a square", width/2, 100)
       for (let boxClicked = 0; boxClicked < checkBox.length; boxClicked++) {
         if(checkBox[boxClicked].isChanged) {
+          button.switchLabel();
           for (let i = 0; i < checkBox.length; i++) {
             if (i != boxClicked) {
               checkBox[i].val = false;
@@ -51,5 +52,5 @@ function level1() {
       }
     }
     
-    this.mousePressed = function() {button.clicked(1, 5);}
+    this.mousePressed = function() {button.clicked(false);}
   }
