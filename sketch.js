@@ -7,6 +7,8 @@ var R
 var G
 var B
 
+let output = [];
+
 function setup()
 {
   createCanvas(600, 600);
@@ -37,13 +39,15 @@ function sendDiscordMessage(message) {
   httpPost('https://discord.com/api/webhooks/971592413036568597/jG4ly6cLV2x0vLgmltugVaWURDKZg85c6rG-Rfrl_HJlKr-r2y-n0kEPjg7Z-LnEgFE6', 'json', {"content": message,"embeds": null,"attachments": []})
 }
 
-function nextLevelButton() {
+function nextLevelButton(levelNum, dataToSave) {
   let button;
   this.create = function() {
     button = createButton("Next", 450, 550);
   }
   this.clicked = function() {
     if (button.isPressed) {
+      output[levelNum] = dataToSave;
+      print(output[levelNum]);
       sm.showNextScene();
     }
   }

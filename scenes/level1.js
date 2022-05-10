@@ -51,5 +51,5 @@ function level1() {
       }
     }
     
-    this.mousePressed = function() {button.clicked();}
+    this.mousePressed = function() {button.clicked(1, 5);}
   }
