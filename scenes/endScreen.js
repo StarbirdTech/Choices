@@ -5,7 +5,8 @@ function endScreen() {
   let coords = [];
   this.enter = function() {
     for (let i = 0; i < 101; i++) {
-      coords.push(coordsHOLD[i % coordsHOLD.length]);
+      coords.push(sliderCounter[i]*2);
+      coords.push(map(i, 0, 100, 0, height));
     }
     graph = new BarGraph(10,10,coords);
     //background('#424549');
@@ -21,7 +22,7 @@ function endScreen() {
       "Level 3": lv3,
       "Level 4": lv4
     });*/
-    graph.draw();
+    //graph.draw();
     noFill();
         stroke(0);
         
@@ -33,7 +34,7 @@ function endScreen() {
           if (i == 0 || i == coords.length - 2) {
             curveVertex(coords[i], coords[i+1]);
           }
-          ellipse(coords[i], coords[i+1], 10, 10);
+          //ellipse(coords[i], coords[i+1], 10, 10);
          }
          endShape();
   }

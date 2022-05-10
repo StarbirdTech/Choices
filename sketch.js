@@ -1,9 +1,16 @@
 var sm; // scene manager
 
+// outputs
+let sliderCounter = [];
+
 function setup()
 {
+  for (let i = 0; i < 101; i++) {
+    sliderCounter.push(50);
+  }
   createCanvas(600, 600);
   sm = new SceneManager();
+  //sm.addScene( endScreen );
   sm.addScene ( menu );
   sm.addScene ( level1 );
   sm.addScene ( level2 );
@@ -42,8 +49,12 @@ function nextLevelButton() {
     button.label = "Next";
     button.visible = true;
   }
-  this.clicked = function() {
+  this.clicked = function(sceneNum, data) {
     if (button.isPressed && interacted) {
+      if (sceneNum == 3) {
+        sliderCounter[data] = 100;
+        print('yes' + data);
+      }
       sm.showNextScene();
     }
   }

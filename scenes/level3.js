@@ -8,6 +8,8 @@ function level3() {
     button = new nextLevelButton();
     button.create();
     s = createSlider("Slider", width/8, height/2-20, width*.75, 60);
+    s.min = 0;
+    s.max = 100;
     fill('#EF2E72')
     text('Move the Slider', width/2, 150);
   }
@@ -20,5 +22,5 @@ function level3() {
     }
   }
 
-  this.mousePressed = function() {button.clicked();}
+  this.mousePressed = function() {button.clicked(3, floor(s.val));}
 }
