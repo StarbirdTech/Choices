@@ -1,14 +1,12 @@
 function endScreen() {
   let graph;
-  let data = [29,10];
-  let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
-  let coords = [];
+  let linegraph;
+  //let data = [29,10];
+  //let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
-    for (let i = 0; i < 101; i++) {
-      coords.push(sliderCounter[i]*2);
-      coords.push(map(i, 0, 100, 0, height));
-    }
-    graph = new BarGraph(10,10,coords);
+    //graph = new BarGraph(10,10,coords);
+    linegraph = new LineGraph(sliderCounter);
+    linegraph.setup();
     //background('#424549');
     background(255);
     textSize(75);
@@ -23,20 +21,7 @@ function endScreen() {
       "Level 4": lv4
     });*/
     //graph.draw();
-    noFill();
-        stroke(0);
-        
-
-        beginShape();
-
-         for (let i = 0; i < coords.length; i+= 2){
-          curveVertex(coords[i], coords[i+1]);
-          if (i == 0 || i == coords.length - 2) {
-            curveVertex(coords[i], coords[i+1]);
-          }
-          //ellipse(coords[i], coords[i+1], 10, 10);
-         }
-         endShape();
+    linegraph.draw();
   }
 }
 
@@ -52,5 +37,34 @@ class BarGraph {
     for (let i = 0; i < this.data.length; i+=2) {
       rect(this.x,this.y+(this.height + this.margin)*i,map(this.data[i],0,150,this.x,width-this.x*2),this.height);
     }
+  }
+}
+
+class LineGraph {
+  constructor(data, showPoints = false) {
+    this.data = data;
+    this.coords = [];
+    this.showPoints = showPoints;
+  }
+  setup() {
+    for (let i = 0; i < 101; i++) {
+      this.coords.push(this.data[i]*2);
+      this.coords.push(map(i, 0, 100, 0, height));
+    }
+  }
+  draw() {
+    noFill();
+    stroke(0);
+    beginShape();
+    for (let i = 0; i < this.coords.length; i+= 2){
+      curveVertex(this.coords[i], this.coords[i+1]);
+      if (i == 0 || i == this.coords.length - 2) {
+        curveVertex(this.coords[i], this.coords[i+1]);
+      }
+      if (this.showPoints) {
+        ellipse(this.coords[i], this.coords[i+1], 10, 10);
+      }
+    }
+    endShape();
   }
 }
