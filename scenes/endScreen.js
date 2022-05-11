@@ -76,9 +76,9 @@ class LineGraph {
     }
     endShape();
 
-    this.showBoundingBox();
+    //this.showBoundingBox();
   }
-  showBoundingBox() {
+  showBoundingBox() { // FIXME bounding box doesn't always match the graph
     rect(this.origin.x, this.origin.y, this.width, this.height)
   }
 }
