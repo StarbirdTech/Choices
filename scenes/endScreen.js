@@ -4,15 +4,16 @@ function endScreen() {
   // ! let graph;
   let barGraph = new BarGraph(data.grid.rand);
   let linegraph = {rand: new LineGraph(data.slider.rand, '#CB2B92'), human: new LineGraph(data.slider.human, '#00008B')};
+  let buttonVisual = new ButtonVisual(data.button.rand, data.button.human);
   ////let data = [29,10];
   ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
-    saveJSON(data, 'test.json');
+    //saveJSON(data, 'test.json');
     // ! graph = new BarGraph(10,10,sliderCounter);
     linegraph.rand.setup();
     linegraph.human.setup();
     //background('#424549');
-    background(255);
+    //background(255);
     textSize(75);
     textAlign(CENTER);
     fill('#EF2E72');
@@ -25,9 +26,10 @@ function endScreen() {
       "Level 4": lv4
     });*/
     // ! graph.draw();
-    linegraph.rand.draw();
-    linegraph.human.draw();
-    barGraph.draw();
+    //linegraph.rand.draw();
+    //linegraph.human.draw();
+    //barGraph.draw();
+    buttonVisual.draw();
   }
 }
 /*
@@ -114,4 +116,25 @@ class BarGraph{
           text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8.5);
       }
   }
+}
+
+class ButtonVisual {
+  constructor(human, rand){
+  this.human = human
+  this.rand  = rand
+  }
+draw() {
+  textSize(30)
+  fill(0)
+  text('Pressed ', 100, height/2+150);
+  text('Skipped ', 500, height/2+150);
+  fill(0);
+  rect(550, height/2-100, -500, 50);
+  fill(255);
+  rect(50, height/2-100, map(this.rand[0]/(this.rand[0]+this.rand[1])*100,0,100,50,550)-50, 50);
+  fill(0);
+  rect(550, height/2+50, -500, 50);
+  fill(255);
+  rect(50, height/2+50, map(this.human[0]/(this.human[0]+this.human[1])*100,0,100,50,550)-50, 50);
+} 
 }
