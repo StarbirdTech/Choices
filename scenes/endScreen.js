@@ -26,9 +26,9 @@ function endScreen() {
       "Level 4": lv4
     });*/
     // ! graph.draw();
-    //linegraph.rand.draw();
-    //linegraph.human.draw();
-    //barGraph.draw();
+    linegraph.rand.draw();
+    linegraph.human.draw();
+    barGraph.draw();
     buttonVisual.draw();
   }
 }
@@ -105,6 +105,7 @@ class BarGraph{
   }
   draw(){
     textAlign(CENTER);
+    stroke(0);
     strokeWeight(1)
     textSize(15);
     fill(0)
@@ -124,6 +125,7 @@ class ButtonVisual {
   this.rand  = rand
   }
 draw() {
+  stroke(0);
   textSize(30)
   fill(0)
   text('Pressed ', 100, height/2+150);
