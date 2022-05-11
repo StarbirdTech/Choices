@@ -24,16 +24,8 @@ function makeRandData() {
   data.grid.rand[floor(random(data.grid.rand.length))]++;
 }
 
-function preload() {
-  data = loadJSON('test.json')
-  //data = loadJSON('test.json', loadedCallback)
-}
-/*
-function loadedCallback()
-{
-  console.log(data.button.rand)
-}
-*/
+function preload() {data = loadJSON('data.json')}
+
 function setup()
 {
   /*
