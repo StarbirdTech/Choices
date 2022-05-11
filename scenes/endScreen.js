@@ -43,10 +43,11 @@ class BarGraph {
 }
 
 class LineGraph {
-  constructor(data, showPoints = false) {
+  constructor(data, showPoints = false, showBoundingBox = true) {
     this.data = data;
     this.coords = [];
     this.showPoints = showPoints;
+    this.showBoundingBox = showBoundingBox
     this.origin = {x: width*.25/2, y: 0}; // FIXME origin.y isn't used correctly
     this.width = width*.75; // ADD vw & vh functions
     this.height = height;
@@ -76,9 +77,11 @@ class LineGraph {
     }
     endShape();
 
-    //this.showBoundingBox();
+    if (this.showBoundingBox) {
+      this.boundingbox();
+    }
   }
-  showBoundingBox() { // FIXME bounding box doesn't always match the graph
+  boundingbox() { // FIXME bounding box doesn't always match the graph
     rect(this.origin.x, this.origin.y, this.width, this.height)
   }
 }
