@@ -1,6 +1,6 @@
 var sm; // scene manager
 
-let endScreenTesting = true;
+let endScreenTesting = false;
 
 //let data;
 /*
@@ -86,8 +86,6 @@ function nextLevelButton() {
     if (button.isPressed && interacted) {
       if (sceneNum == 3) {
         data.slider.human[inputData]++;
-        print('yes' + inputData);
-        print(data.slider.human[inputData])
       }
       sm.showNextScene();
     }
