@@ -11,8 +11,8 @@ class BarGraph{
     }
 
     setup(){
-        createCanvas(600, 600);
         textAlign(CENTER);
+        textSize(50);
         for(let i = 0; i < 100; i++){
             data.grid.rand[floor(random(9))]++;
         }
