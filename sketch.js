@@ -1,23 +1,26 @@
 var sm; // scene manager
 
+let endScreenTesting = true;
+
 // outputs
 let sliderCounter = [];
 
 function setup()
 {
+  randomSeed(0)
   // fill sliderCounter with mock data
   for (let i = 0; i < 101; i++) {
-    sliderCounter.push(50);
+    sliderCounter.push(floor(random(10,50)));
   }
   createCanvas(600, 600);
   sm = new SceneManager();
-  sm.addScene( endScreen );
+  if (endScreenTesting) {sm.addScene( endScreen )};
   sm.addScene ( menu );
   sm.addScene ( level1 );
   sm.addScene ( level2 );
   sm.addScene ( level3 );
   sm.addScene ( level4 );
-  //sm.addScene ( endScreen );
+  if (!endScreenTesting) {sm.addScene ( endScreen )};
   sm.showNextScene();
 }
 

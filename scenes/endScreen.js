@@ -1,5 +1,7 @@
+//Most commented code is for drawing the bar graph or sending data to sheet2api
+
 function endScreen() {
-  let graph;
+  //let graph;
   let linegraph;
   //let data = [29,10];
   //let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
@@ -45,19 +47,23 @@ class LineGraph {
     this.data = data;
     this.coords = [];
     this.showPoints = showPoints;
-    this.origin = {x: 0, y: 0};
-    this.width = width;
+    this.origin = {x: width*.25/2, y: 0}; // FIXME origin.y isn't used correctly
+    this.width = width*.75; // ADD vw & vh functions
     this.height = height;
   }
   setup() {
+    // load coords from data
     for (let i = 0; i < 101; i++) {
-      this.coords.push(this.data[i]*2); // X
-      this.coords.push(map(i, 0, 100, this.origin.y, this.height)); // Y
+      this.coords.push(map(i, 0, 100, this.origin.x, this.width+this.origin.x)); // X
+      this.coords.push(map(this.data[i], 0, 150, this.origin.y+this.height, this.origin.y)); // X
     }
   }
   draw() {
     noFill();
     stroke(0);
+    strokeWeight(3);
+
+    // draw line
     beginShape();
     for (let i = 0; i < this.coords.length; i+= 2){
       curveVertex(this.coords[i], this.coords[i+1]);
@@ -69,9 +75,15 @@ class LineGraph {
       }
     }
     endShape();
+
     this.showBoundingBox();
   }
   showBoundingBox() {
     rect(this.origin.x, this.origin.y, this.width, this.height)
   }
 }
+
+// ADD
+// lerp between mills since animation started maped between max time and distance
+// line flattens when other data is dragged over it, then leprs to new data
+// can also switch between types of graphs
