@@ -7,10 +7,10 @@ function endScreen() {
   ////let data = [29,10];
   ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
+    saveJSON(data, 'test.json');
     // ! graph = new BarGraph(10,10,sliderCounter);
     linegraph.rand.setup();
     linegraph.human.setup();
-    barGraph.setup();
     //background('#424549');
     background(255);
     textSize(75);
@@ -101,14 +101,8 @@ class BarGraph{
   constructor(data){
       this.data = data;
   }
-
-  setup(){
-      textAlign(CENTER);
-      for(let i = 0; i < 100; i++){
-          data.grid.rand[floor(random(9))]++;
-      }
-  }
   draw(){
+    textAlign(CENTER);
     strokeWeight(1)
     textSize(15);
     fill(0)

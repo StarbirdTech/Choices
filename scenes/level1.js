@@ -6,6 +6,8 @@ function level1() {
     var checkBox = [];
     var gui;
     var button;
+
+    let selection = 0;
   
     this.enter = function() {
       gui = createGui();
@@ -44,6 +46,7 @@ function level1() {
         if(checkBox[boxClicked].isChanged) {
           button.switchLabel();
           for (let i = 0; i < checkBox.length; i++) {
+            this.selection = i;
             if (i != boxClicked) {
               checkBox[i].val = false;
             }
@@ -52,5 +55,5 @@ function level1() {
       }
     }
     
-    this.mousePressed = function() {button.clicked();}
+    this.mousePressed = function() {button.clicked(1, this.selection);}
   }
