@@ -3,14 +3,17 @@ var sm; // scene manager
 let endScreenTesting = false;
 
 // outputs
-let sliderCounter = [];
+let sliderCounter = {rand: [], human: [], ai: []};
 
 function setup()
 {
   randomSeed(0)
   // fill sliderCounter with mock data
   for (let i = 0; i < 101; i++) {
-    sliderCounter.push(floor(random(10,50)));
+    sliderCounter.rand.push(floor(random(10,50)));
+  }
+  for (let i = 0; i < 101; i++) {
+    sliderCounter.human.push(0);
   }
   createCanvas(600, 600);
   sm = new SceneManager();
@@ -56,7 +59,7 @@ function nextLevelButton() {
   this.clicked = function(sceneNum, data) {
     if (button.isPressed && interacted) {
       if (sceneNum == 3) {
-        sliderCounter[data] = 100;
+        sliderCounter.human[data] = 100;
         print('yes' + data);
       }
       sm.showNextScene();

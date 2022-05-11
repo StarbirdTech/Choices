@@ -1,20 +1,20 @@
-//Most commented code is for drawing the bar graph or sending data to sheet2api
+// * Most commented code is for drawing the bar graph or sending data to sheet2api
 
 function endScreen() {
-  //let graph;
-  let linegraph;
-  //let data = [29,10];
-  //let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
+  // ! let graph;
+  let linegraph = {rand: new LineGraph(sliderCounter.rand), human: new LineGraph(sliderCounter.human), ai: null};
+  ////let data = [29,10];
+  ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
-    //graph = new BarGraph(10,10,coords);
-    linegraph = new LineGraph(sliderCounter);
-    linegraph.setup();
+    // ! graph = new BarGraph(10,10,sliderCounter);
+    linegraph.rand.setup();
+    linegraph.human.setup();
     //background('#424549');
     background(255);
     textSize(75);
     textAlign(CENTER);
     fill('#EF2E72');
-    //text("End Screen", width / 2, height/3);
+    ////text("End Screen", width / 2, height/3);
     /*httpPost('https://sheet2api.com/v1/OL0isnynQyCu/test/Sheet1', 'json',
     {
       "Level 1": lv1,
@@ -22,8 +22,9 @@ function endScreen() {
       "Level 3": lv3,
       "Level 4": lv4
     });*/
-    //graph.draw();
-    linegraph.draw();
+    // ! graph.draw();
+    linegraph.rand.draw();
+    linegraph.human.draw();
   }
 }
 
@@ -48,8 +49,8 @@ class LineGraph {
     this.coords = [];
     this.showPoints = showPoints;
     this.showBoundingBox = showBoundingBox
-    this.origin = {x: width*.25/2, y: 0}; // FIXME origin.y isn't used correctly
-    this.width = width*.75; // ADD vw & vh functions
+    this.origin = {x: width*.25/2, y: 0}; // ! origin.y isn't used correctly
+    this.width = width*.75; // TODO vw & vh functions
     this.height = height;
   }
   setup() {
@@ -74,6 +75,7 @@ class LineGraph {
       if (this.showPoints) {
         ellipse(this.coords[i], this.coords[i+1], 10, 10);
       }
+      //if (this.c)
     }
     endShape();
 
@@ -86,7 +88,7 @@ class LineGraph {
   }
 }
 
-// ADD
+// TODO
 // lerp between mills since animation started maped between max time and distance
 // line flattens when other data is dragged over it, then leprs to new data
 // can also switch between types of graphs
