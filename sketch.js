@@ -1,6 +1,6 @@
 var sm; // scene manager
 
-let endScreenTesting = true;
+let endScreenTesting = false;
 
 //let data;
 /*

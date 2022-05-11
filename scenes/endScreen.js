@@ -12,7 +12,7 @@ function endScreen() {
     // ! graph = new BarGraph(10,10,sliderCounter);
     linegraph.rand.setup();
     linegraph.human.setup();
-    //background('#424549');
+    background('#424549');
     //background(255);
     textSize(75);
     textAlign(CENTER);
