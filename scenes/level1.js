@@ -46,7 +46,7 @@ function level1() {
         if(checkBox[boxClicked].isChanged) {
           button.switchLabel();
           for (let i = 0; i < checkBox.length; i++) {
-            this.selection = i;
+            selection = i;
             if (i != boxClicked) {
               checkBox[i].val = false;
             }
@@ -55,5 +55,5 @@ function level1() {
       }
     }
     
-    this.mousePressed = function() {button.clicked(1, this.selection);}
+    this.mousePressed = function() {button.clicked(1, selection);}
   }
