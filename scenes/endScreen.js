@@ -115,9 +115,9 @@ class BarGraph{
     rectMode(CORNER);
       for(let i = 0; i < 9; i++){
           fill(255);
-          rect(i*66+11, 550, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
+          rect(i*66+11, 580, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
           fill(0);
-          text(data.grid.rand[i], i*66+35, 550-data.grid.rand[i]*8.5);
+          text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8.5);
       }
   }
 }
