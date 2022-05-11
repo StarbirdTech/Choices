@@ -43,7 +43,7 @@ class BarGraph {
 }
 
 class LineGraph {
-  constructor(data, showPoints = false, showBoundingBox = true) {
+  constructor(data, showPoints = false, showBoundingBox = false) {
     this.data = data;
     this.coords = [];
     this.showPoints = showPoints;
