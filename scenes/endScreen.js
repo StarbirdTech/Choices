@@ -2,14 +2,13 @@
 
 function endScreen() {
   // ! let graph;
-  let linegraph = {rand: new LineGraph(sliderCounter.rand, '#CB2B92'), human: new LineGraph(sliderCounter.human, '#00008B'), ai: new LineGraph(sliderCounter.ai, '#008b8b')};
+  let linegraph = {rand: new LineGraph(data.slider.rand, '#CB2B92'), human: new LineGraph(data.slider.human, '#00008B')};
   ////let data = [29,10];
   ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
     // ! graph = new BarGraph(10,10,sliderCounter);
     linegraph.rand.setup();
     linegraph.human.setup();
-    linegraph.ai.setup();
     //background('#424549');
     background(255);
     textSize(75);
@@ -26,7 +25,6 @@ function endScreen() {
     // ! graph.draw();
     linegraph.rand.draw();
     linegraph.human.draw();
-    linegraph.ai.draw();
   }
 }
 

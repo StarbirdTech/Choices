@@ -2,22 +2,45 @@ var sm; // scene manager
 
 let endScreenTesting = false;
 
-// outputs
-let sliderCounter = {rand: [], human: [], ai: []};
+//let data;
+/*
+// data from database
+let data = {
+  grid: {rand: [], human: []},
+  button: {rand: [], human: []},
+  slider: {rand: [], human: []},
+  colorGrid: {rand: [], human: []},
+}
+*/
+// data from current user
+let currentData = {
+  grid: null,
+  button: null,
+  slider: null,
+  colorGrid: null,
+}
+
+function preload() {
+  data = loadJSON('test.json', loadedCallback)
+}
+
+function loadedCallback()
+{
+  console.log(data.button.rand)
+}
 
 function setup()
 {
+  /*
   randomSeed(0)
   // fill sliderCounter with mock data
   for (let i = 0; i < 101; i++) {
-    sliderCounter.rand.push(floor(random(10,50)));
+    data.slider.rand.push(floor(random(10,50)));
   }
   for (let i = 0; i < 101; i++) {
-    sliderCounter.human.push(0);
+    data.slider.human.push(0);
   }
-  for (let i = 0; i < 101; i++) {
-    sliderCounter.ai.push(floor(random(20,100)));
-  }
+  print(data.slider.human);*/
   createCanvas(600, 600);
   sm = new SceneManager();
   if (endScreenTesting) {sm.addScene( endScreen )};
@@ -59,11 +82,12 @@ function nextLevelButton() {
     button.label = "Next";
     button.visible = true;
   }
-  this.clicked = function(sceneNum, data) {
+  this.clicked = function(sceneNum, inputData) {
     if (button.isPressed && interacted) {
       if (sceneNum == 3) {
-        sliderCounter.human[data]++;
-        print('yes' + data);
+        data.slider.human[inputData]++;
+        print('yes' + inputData);
+        print(data.slider.human[inputData])
       }
       sm.showNextScene();
     }
