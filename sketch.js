@@ -20,8 +20,21 @@ let currentData = {
   colorGrid: null,
 }
 
-function makeRandData() {
-  data.grid.rand[floor(random(data.grid.rand.length))]++;
+function addRandData(sceneNum) {
+  switch (sceneNum) {
+    case 1:
+      data.grid.rand[floor(random(9))]++;
+      break;
+    case 2:
+      data.button.rand[floor(random(1))]++;
+      break;
+    case 3:
+      data.slider.rand[floor(random(100))]++;
+      break;
+    case 4:
+      data.colorGrid.rand[floor(random(9))]++;
+      break;
+  }
 }
 
 function preload() {data = loadJSON('data.json')}
@@ -81,9 +94,7 @@ function nextLevelButton() {
   }
   this.clicked = function(sceneNum, inputData) {
     if (button.isPressed && interacted) {
-      if (sceneNum == 1) {
-        data.grid.rand[inputData]++;
-      }
+      addRandData(sceneNum);
       if (sceneNum == 3) {
         data.slider.human[inputData]++;
       }
