@@ -2,13 +2,14 @@
 
 function endScreen() {
   // ! let graph;
-  let linegraph = {rand: new LineGraph(sliderCounter.rand), human: new LineGraph(sliderCounter.human), ai: null};
+  let linegraph = {rand: new LineGraph(sliderCounter.rand, '#CB2B92'), human: new LineGraph(sliderCounter.human, '#00008B'), ai: new LineGraph(sliderCounter.ai, '#008b8b')};
   ////let data = [29,10];
   ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
     // ! graph = new BarGraph(10,10,sliderCounter);
     linegraph.rand.setup();
     linegraph.human.setup();
+    linegraph.ai.setup();
     //background('#424549');
     background(255);
     textSize(75);
@@ -25,6 +26,7 @@ function endScreen() {
     // ! graph.draw();
     linegraph.rand.draw();
     linegraph.human.draw();
+    linegraph.ai.draw();
   }
 }
 
@@ -44,9 +46,10 @@ class BarGraph {
 }
 
 class LineGraph {
-  constructor(data, showPoints = false, showBoundingBox = false) {
+  constructor(data, lineColor, showPoints = false, showBoundingBox = false) {
     this.data = data;
     this.coords = [];
+    this.lineColor = lineColor;
     this.showPoints = showPoints;
     this.showBoundingBox = showBoundingBox
     this.origin = {x: width*.25/2, y: 0}; // ! origin.y isn't used correctly
@@ -62,7 +65,7 @@ class LineGraph {
   }
   draw() {
     noFill();
-    stroke(0);
+    stroke(this.lineColor);
     strokeWeight(3);
 
     // draw line

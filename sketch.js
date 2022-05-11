@@ -15,6 +15,9 @@ function setup()
   for (let i = 0; i < 101; i++) {
     sliderCounter.human.push(0);
   }
+  for (let i = 0; i < 101; i++) {
+    sliderCounter.ai.push(floor(random(20,100)));
+  }
   createCanvas(600, 600);
   sm = new SceneManager();
   if (endScreenTesting) {sm.addScene( endScreen )};
@@ -59,7 +62,7 @@ function nextLevelButton() {
   this.clicked = function(sceneNum, data) {
     if (button.isPressed && interacted) {
       if (sceneNum == 3) {
-        sliderCounter.human[data] = 100;
+        sliderCounter.human[data]++;
         print('yes' + data);
       }
       sm.showNextScene();
