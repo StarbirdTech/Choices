@@ -8,7 +8,7 @@ function endScreen() {
   ////let data = [29,10];
   ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
   this.enter = function() {
-    //saveJSON(data, 'test.json');
+    saveJSON(data, 'data.json');
     // ! graph = new BarGraph(10,10,sliderCounter);
     linegraph.rand.setup();
     linegraph.human.setup();

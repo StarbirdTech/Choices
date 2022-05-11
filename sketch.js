@@ -21,12 +21,14 @@ let currentData = {
 }
 
 function addRandData(sceneNum) {
+  print("monke")
   switch (sceneNum) {
     case 1:
       data.grid.rand[floor(random(9))]++;
       break;
     case 2:
       data.button.rand[floor(random(1))]++;
+      print(data.button.rand);
       break;
     case 3:
       data.slider.rand[floor(random(100))]++;
@@ -95,6 +97,7 @@ function nextLevelButton() {
   this.clicked = function(sceneNum, inputData) {
     if (button.isPressed && interacted) {
       addRandData(sceneNum);
+      print("Hello ah monke")
       if (sceneNum == 3) {
         data.slider.human[inputData]++;
       }
