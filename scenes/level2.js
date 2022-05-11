@@ -5,9 +5,13 @@ function level2 () {
   let mouseDown = false;
   let clicked = false;
   let gui;
+  let button;
   let message = "Do Not Press the Button";
 
   this.enter = function() {
+    button = new nextLevelButton();
+    button.create();
+    button.switchLabel();
     rectMode(CENTER);
     background('#424549');
     strokeWeight(5);
@@ -61,6 +65,12 @@ function level2 () {
   this.mousePressed = function() {
     mouseDown = true;
     pressed = true;
+    if (clicked == false) {
+      button.clicked(2, 0);
+    }
+    else {
+      button.clicked(2, 1);
+    }
   }
 
   this.mouseReleased = function() {
