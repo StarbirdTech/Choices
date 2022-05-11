@@ -20,25 +20,6 @@ let currentData = {
   colorGrid: null,
 }
 
-function addRandData(sceneNum) {
-  print("monke")
-  switch (sceneNum) {
-    case 1:
-      data.grid.rand[floor(random(9))]++;
-      break;
-    case 2:
-      data.button.rand[floor(random(1))]++;
-      print(data.button.rand);
-      break;
-    case 3:
-      data.slider.rand[floor(random(100))]++;
-      break;
-    case 4:
-      data.colorGrid.rand[floor(random(9))]++;
-      break;
-  }
-}
-
 function preload() {data = loadJSON('data.json')}
 
 function setup()
@@ -97,11 +78,42 @@ function nextLevelButton() {
   this.clicked = function(sceneNum, inputData) {
     if (button.isPressed && interacted) {
       addRandData(sceneNum);
-      print("Hello ah monke")
-      if (sceneNum == 3) {
-        data.slider.human[inputData]++;
-      }
+      addUserData(sceneNum, inputData)
       sm.showNextScene();
     }
+  }
+}
+
+function addRandData(sceneNum) {
+  switch (sceneNum) {
+    case 1:
+      data.grid.rand[floor(random(9))]++;
+      break;
+    case 2:
+      data.button.rand[floor(random(2))]++;
+      break;
+    case 3:
+      data.slider.rand[floor(random(100))]++;
+      break;
+    case 4:
+      data.colorGrid.rand[floor(random(9))]++;
+      break;
+  }
+}
+
+function addUserData(sceneNum, inputData) {
+  switch (sceneNum) {
+    case 1:
+      data.grid.human[inputData]++;
+      break;
+    case 2:
+      data.button.human[inputData]++;
+      break;
+    case 3:
+      data.slider.human[inputData]++;
+      break;
+    case 4:
+      data.colorGrid.human[inputData]++;
+      break;
   }
 }
