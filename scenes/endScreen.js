@@ -122,7 +122,10 @@ class BarGraph{
       fill(255);
       rect(i*66+11, 580, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
       fill(0);
+      if(this.data.grid.rand[i] > 1){
       text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8.5);
+    } else{
+      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*9);
     }
   }
 }
