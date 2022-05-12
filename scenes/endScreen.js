@@ -75,7 +75,7 @@ class LineGraph {
     // load coords from data
     for (let i = 0; i < 101; i++) {
       this.coords.push(map(i, 0, 100, this.origin.x, this.width+this.origin.x)); // X
-      this.coords.push(map(this.data[i], 0, 150, this.origin.y+this.height, this.origin.y)); // X
+      this.coords.push(map(this.data[i], 0, 50, this.origin.y+this.height, this.origin.y)); // X
     }
   }
   draw() {
