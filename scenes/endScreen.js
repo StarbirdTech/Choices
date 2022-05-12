@@ -33,11 +33,11 @@ function endScreen() {
   this.drawGraph = function() {
     background('#424549');
     if (currentGraph == 0) {
-      linegraph.rand.draw();
-      linegraph.human.draw();
+      barGraph.draw();
     }
     if (currentGraph == 1) {
-      barGraph.draw();
+      linegraph.rand.draw();
+      linegraph.human.draw();
     }
     if (currentGraph == 2) {
       buttonVisual.draw();
@@ -141,8 +141,9 @@ class ButtonVisual {
   draw() {
     stroke(0);
     textSize(30)
-    fill(0)
+    fill(255)
     text('Pressed ', 100, height/2+150);
+    fill(0);
     text('Skipped ', 500, height/2+150);
     fill(0);
     rect(550, height/2-100, -500, 50);
