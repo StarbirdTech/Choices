@@ -180,21 +180,21 @@ class ButtonVisual {
     textSize(25)
 
     stroke(0)
-    strokeWeight(5)
-    textSize(30)
-    fill(255)
+    strokeWeight(3)
+    textSize(25)
+    fill(75, 0, 130);
     text('Pressed ', 100, height/2+150);
     fill(0);
     text('Skipped ', 500, height/2+150);
     fill(0);
     stroke('#00008B');
     rect(550, height/2-100, -500, 50);
-    fill('#00008B');
+    fill(75, 0, 130);
     rect(50, height/2-100, map(this.rand[0]/(this.rand[0]+this.rand[1])*100,0,100,50,550)-50, 50);
     fill(0);
     stroke('#CB2B92')
     rect(550, height/2+50, -500, 50);
-    fill(230);
+    fill(75, 0, 130);
     rect(50, height/2+50, map(this.human[0]/(this.human[0]+this.human[1])*100,0,100,50,550)-50, 50);
   } 
 }
