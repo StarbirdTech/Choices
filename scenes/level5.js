@@ -4,15 +4,21 @@ function level5() {
   let choice = 1;
   let message = 'Choose A Door'
   let clickcounter = 0;
-  let gui = createGui();
-  let button = new nextLevelButton();
+  let gui;
+  let button;
 
   this.enter = function() {
+    gui = createGui();
+    button = new nextLevelButton();
+    background('#424549');
+    fill(0);
+    stroke(0);
+    print(data)
+    strokeWeight(1);
     button.create();
     rectMode(CENTER);
     background('#424549');
     textSize(60);
-    fill(0);
     textAlign(CENTER)
     text(message, width/2, 100);
     for (let i = 0; i < 3; i++) {
@@ -41,8 +47,8 @@ function level5() {
   this.coverText = function() {
     noStroke();
     fill('#424549');
-    rect(300, 500, 600, 100);
     rect(300, 100, 600, 100)
+    stroke(0);
   }
 
   this.mousePressed = function() {
