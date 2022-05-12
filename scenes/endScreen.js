@@ -69,7 +69,7 @@ class LineGraph {
     this.showBoundingBox = showBoundingBox
     this.origin = {x: width*.25/2, y: 0}; // ! origin.y isn't used correctly
     this.width = width*.75; // TODO vw & vh functions
-    this.height = height*.75;
+    this.height = 580;
   }
   setup() {
     // load coords from data
