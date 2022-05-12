@@ -1,6 +1,6 @@
 var sm; // scene manager
 
-let endScreenTesting = true;
+let endScreenTesting = false;
 
 // data from database
 /*
@@ -34,6 +34,7 @@ function setup()
   sm.addScene ( level2 );
   sm.addScene ( level3 );
   sm.addScene ( level4 );
+  sm.addScene( level5 );
   if (!endScreenTesting) {sm.addScene ( endScreen )};
   sm.showNextScene();
 }
@@ -90,6 +91,9 @@ function addRandData(sceneNum) {
     case 4:
       data.colorGrid.rand[floor(random(9))]++;
       break;
+    case 5:
+      print('hello');
+      break;
   }
 }
 
@@ -106,6 +110,9 @@ function addUserData(sceneNum, inputData) {
       break;
     case 4:
       data.colorGrid.human[inputData]++;
+      break;
+    case 5:
+      print('hello');
       break;
   }
 }
