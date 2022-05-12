@@ -1,6 +1,8 @@
+// edit json data: https://www.npoint.io/docs/4edfa4cb752f61814913
+
 var sm; // scene manager
 
-let endScreenTesting = true;
+let endScreenTesting = false;
 
 // data from database
 /*
@@ -12,7 +14,7 @@ let data = {
 }
 */
 
-function preload() {data = loadJSON('https://api.jsonserve.com/EdMjIe', 'json', 'no-cors')}
+function preload() {data = loadJSON('data.json')}
 
 function setup()
 {
