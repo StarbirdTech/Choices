@@ -21,24 +21,27 @@ function endScreen() {
       "Level 3": lv3,
       "Level 4": lv4
     });*/
+    this.drawGraph();
   }
-  this.draw = function() {
-    linegraph.rand.draw();
-    linegraph.human.draw();
-    buttonVisual.draw();
-    barGraph.draw();/*
-    if (currentGraph === 0) {
-      text("Random", width / 2, height / 2);
-    } else {
-      text("Human", width / 2, height / 2);
+  this.mouseReleased = function() {
+    currentGraph++;
+    if (currentGraph > 2) {
+      currentGraph = 0;
     }
-    if (mouseIsPressed) {
-      if (mouseX > width / 2 - 100 && mouseX < width / 2 + 100 && mouseY > height / 2 - 100 && mouseY < height / 2 + 100) {
-        currentGraph = 1;
-      } else if (mouseX > width / 2 - 100 && mouseX < width / 2 + 100 && mouseY > height / 2 - 100 && mouseY < height / 2 + 100) {
-        currentGraph = 0;
-      }
-    }*/
+    this.drawGraph();
+  }
+  this.drawGraph = function() {
+    background('#424549');
+    if (currentGraph == 0) {
+      linegraph.rand.draw();
+      linegraph.human.draw();
+    }
+    if (currentGraph == 1) {
+      barGraph.draw();
+    }
+    if (currentGraph == 2) {
+      buttonVisual.draw();
+    }
   }
 }
 /*
