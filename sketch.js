@@ -12,7 +12,7 @@ let data = {
 }
 */
 
-function preload() {data = loadJSON('data.json')}
+function preload() {data = loadJSON('https://api.jsonserve.com/EdMjIe', 'json', 'no-cors')}
 
 function setup()
 {
