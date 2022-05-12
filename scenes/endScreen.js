@@ -23,6 +23,16 @@ function endScreen() {
     });*/
     this.drawGraph();
   }
+  this.draw = function() {
+    textAlign(CENTER);
+    textSize(25);
+    stroke(0)
+    strokeWeight(3)
+    fill('#CB2B92')
+    text('Robot', width/4, 20);
+    fill('#00008B')
+    text('Human', width/4*3-15, 20);
+  }
   this.mouseReleased = function() {
     currentGraph++;
     if (currentGraph > 2) {
@@ -122,15 +132,26 @@ class BarGraph{
     fill(0)
     rectMode(CORNER);
     for(let i = 0; i < 9; i++){
-      fill(255);
-      rect(i*66+11, 580, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
+      fill('#CB2B92');
+      rect(i*66+11, 580, 25, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
       fill(0);
       if(data.grid.rand[i] >= 2){
-      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8);
+      text(data.grid.rand[i], i*66+25, 580-data.grid.rand[i]*8);
     } else{
-      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*3.5);
+      text(data.grid.rand[i], i*66+25, 580-data.grid.rand[i]*3.5);
     }
   }
+
+  for(let i = 0; i < 9; i++){
+    fill('#00008B');
+    rect(i*66+40, 580, 25, -map(data.grid.human[i], 0, 100, 0, height*3), 5);
+    fill(230);
+    if(data.grid.human[i] >= 2){
+    text(data.grid.human[i], i*66+53, 580-data.grid.human[i]*8);
+  } else{
+    text(data.grid.human[i], i*66+53, 580-data.grid.human[i]*3.5);
+  }
+}
 }
 }
 class ButtonVisual {
@@ -139,19 +160,22 @@ class ButtonVisual {
     this.rand  = rand
   }
   draw() {
-    stroke(0);
+    stroke(0)
+    strokeWeight(5)
     textSize(30)
     fill(255)
     text('Pressed ', 100, height/2+150);
     fill(0);
     text('Skipped ', 500, height/2+150);
     fill(0);
+    stroke('#00008B');
     rect(550, height/2-100, -500, 50);
-    fill(255);
+    fill(230);
     rect(50, height/2-100, map(this.rand[0]/(this.rand[0]+this.rand[1])*100,0,100,50,550)-50, 50);
     fill(0);
+    stroke('#CB2B92')
     rect(550, height/2+50, -500, 50);
-    fill(255);
+    fill(230);
     rect(50, height/2+50, map(this.human[0]/(this.human[0]+this.human[1])*100,0,100,50,550)-50, 50);
   } 
 }
