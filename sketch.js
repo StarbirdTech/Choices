@@ -1,10 +1,9 @@
 var sm; // scene manager
 
-let endScreenTesting = false;
+let endScreenTesting = true;
 
-//let data;
-/*
 // data from database
+/*
 let data = {
   grid: {rand: [], human: []},
   button: {rand: [], human: []},
@@ -12,13 +11,6 @@ let data = {
   colorGrid: {rand: [], human: []},
 }
 */
-// data from current user
-let currentData = {
-  grid: null,
-  button: null,
-  slider: null,
-  colorGrid: null,
-}
 
 function preload() {data = loadJSON('data.json')}
 
