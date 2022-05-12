@@ -92,7 +92,7 @@ function addRandData(sceneNum) {
       data.colorGrid.rand[floor(random(9))]++;
       break;
     case 5:
-      print('hello');
+      data.door.rand[floor(random(3))][floor(random(3))]++;
       break;
   }
 }
@@ -112,7 +112,7 @@ function addUserData(sceneNum, inputData) {
       data.colorGrid.human[inputData]++;
       break;
     case 5:
-      print('hello');
+      data.door.human[inputData[0]-1][inputData[1]-1]++;
       break;
   }
 }

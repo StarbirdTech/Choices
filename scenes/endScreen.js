@@ -6,7 +6,7 @@ function endScreen() {
   let buttonVisual = new ButtonVisual(data.button.rand, data.button.human);
   let currentGraph = 0;
   this.enter = function() {
-    //saveJSON(data, 'data.json');
+    saveJSON(data, 'data.json');
     linegraph.rand.setup();
     linegraph.human.setup();
     background('#424549');
