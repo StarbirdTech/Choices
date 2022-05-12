@@ -99,6 +99,6 @@ function level5() {
     }
     fill(0);
     text(message, width/2, 100);
-    button.clicked(5, choice);
+    button.clicked(5, output);
   }
 }

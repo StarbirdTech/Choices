@@ -112,7 +112,7 @@ function addUserData(sceneNum, inputData) {
       data.colorGrid.human[inputData]++;
       break;
     case 5:
-      //data.door.human[inputData[0]-1][inputData[1]-1]++;
+      data.door.human[inputData[0]-1][inputData[1]-1]++;
       break;
   }
 }
