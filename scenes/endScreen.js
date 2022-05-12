@@ -1,19 +1,15 @@
 // * Most commented code is for drawing the bar graph or sending data to sheet2api
 
 function endScreen() {
-  // ! let graph;
   let barGraph = new BarGraph(data.grid.rand);
   let linegraph = {rand: new LineGraph(data.slider.rand, '#CB2B92'), human: new LineGraph(data.slider.human, '#00008B')};
   let buttonVisual = new ButtonVisual(data.button.rand, data.button.human);
-  ////let data = [29,10];
-  ////let coordsHOLD = [100, 40, 80, 60, 100, 100, 10, 120, 50, 150];
+  let currentGraph = 0;
   this.enter = function() {
-    saveJSON(data, 'data.json');
-    // ! graph = new BarGraph(10,10,sliderCounter);
+    //saveJSON(data, 'data.json');
     linegraph.rand.setup();
     linegraph.human.setup();
     background('#424549');
-    //background(255);
     textSize(75);
     textAlign(CENTER);
     fill('#EF2E72');
@@ -25,11 +21,29 @@ function endScreen() {
       "Level 3": lv3,
       "Level 4": lv4
     });*/
-    // ! graph.draw();
-    linegraph.rand.draw();
-    linegraph.human.draw();
-    barGraph.draw();
-    buttonVisual.draw();
+    this.drawGraph();
+  }
+  this.mouseClicked = function() {
+    currentGraph++;
+    if (currentGraph > 2) {
+      currentGraph = 0;
+    }
+    this.drawGraph();
+  }
+  this.drawGraph = function() {
+    background('#424549');
+    switch (currentGraph) {
+      case 1:
+        linegraph.rand.draw();
+        linegraph.human.draw();
+        break;
+      case 2:
+        barGraph.draw();
+        break;
+      case 3:
+        buttonVisual.draw();
+        break;
+    }
   }
 }
 /*
@@ -81,7 +95,6 @@ class LineGraph {
       if (this.showPoints) {
         ellipse(this.coords[i], this.coords[i+1], 10, 10);
       }
-      //if (this.c)
     }
     endShape();
 
@@ -101,7 +114,7 @@ class LineGraph {
 
 class BarGraph{
   constructor(data){
-      this.data = data;
+    this.data = data;
   }
   draw(){
     textAlign(CENTER);
@@ -110,33 +123,33 @@ class BarGraph{
     textSize(15);
     fill(0)
     rectMode(CORNER);
-      for(let i = 0; i < 9; i++){
-          fill(255);
-          rect(i*66+11, 580, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
-          fill(0);
-          text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8.5);
-      }
+    for(let i = 0; i < 9; i++){
+      fill(255);
+      rect(i*66+11, 580, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
+      fill(0);
+      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8.5);
+    }
   }
 }
 
 class ButtonVisual {
   constructor(human, rand){
-  this.human = human
-  this.rand  = rand
+    this.human = human
+    this.rand  = rand
   }
-draw() {
-  stroke(0);
-  textSize(30)
-  fill(0)
-  text('Pressed ', 100, height/2+150);
-  text('Skipped ', 500, height/2+150);
-  fill(0);
-  rect(550, height/2-100, -500, 50);
-  fill(255);
-  rect(50, height/2-100, map(this.rand[0]/(this.rand[0]+this.rand[1])*100,0,100,50,550)-50, 50);
-  fill(0);
-  rect(550, height/2+50, -500, 50);
-  fill(255);
-  rect(50, height/2+50, map(this.human[0]/(this.human[0]+this.human[1])*100,0,100,50,550)-50, 50);
-} 
+  draw() {
+    stroke(0);
+    textSize(30)
+    fill(0)
+    text('Pressed ', 100, height/2+150);
+    text('Skipped ', 500, height/2+150);
+    fill(0);
+    rect(550, height/2-100, -500, 50);
+    fill(255);
+    rect(50, height/2-100, map(this.rand[0]/(this.rand[0]+this.rand[1])*100,0,100,50,550)-50, 50);
+    fill(0);
+    rect(550, height/2+50, -500, 50);
+    fill(255);
+    rect(50, height/2+50, map(this.human[0]/(this.human[0]+this.human[1])*100,0,100,50,550)-50, 50);
+  } 
 }

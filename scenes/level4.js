@@ -65,13 +65,17 @@ function level4() {
     text("Chose a color", width/2, 100)
     for (let boxClicked = 0; boxClicked < checkBox.length; boxClicked++) {
       if(checkBox[boxClicked].isChanged) {
-        button.switchLabel();
         for (let i = 0; i < checkBox.length; i++) {
-          selection = i;
           if (i != boxClicked) {
             checkBox[i].val = false;
           }
         }
+      }
+    }
+    for (let i = 0; i < checkBox.length;  i++) {
+      if (checkBox[i].val) {
+        selection = i;
+        button.switchLabel();
       }
     }
   }
