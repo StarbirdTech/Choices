@@ -125,11 +125,14 @@ class BarGraph{
       fill(255);
       rect(i*66+11, 580, 50, -map(data.grid.rand[i], 0, 100, 0, height*3), 5);
       fill(0);
-      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8.5);
+      if(data.grid.rand[i] >= 2){
+      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*8);
+    } else{
+      text(data.grid.rand[i], i*66+35, 580-data.grid.rand[i]*3.5);
     }
   }
 }
-
+}
 class ButtonVisual {
   constructor(human, rand){
     this.human = human
