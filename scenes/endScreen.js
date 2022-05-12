@@ -29,9 +29,9 @@ function endScreen() {
     stroke(0)
     strokeWeight(3)
     fill('#CB2B92')
-    text('Robot', width/4, 20);
+    text('Robot', width/10, 30);
     fill('#00008B')
-    text('Human', width/4*3-15, 20);
+    text(' Human', width/10*9-15, 30);
   }
   this.mouseReleased = function() {
     currentGraph++;
@@ -89,6 +89,13 @@ class LineGraph {
     }
   }
   draw() {
+    textSize(30)
+    fill(75, 0, 130);
+    strokeWeight(5)
+    stroke(0)
+    text('Slider', width/2, 30);
+    textSize(25)
+
     noFill();
     stroke(this.lineColor);
     strokeWeight(3);
@@ -125,6 +132,12 @@ class BarGraph{
     this.data = data;
   }
   draw(){
+    textSize(30)
+    fill(75, 0, 130);
+    strokeWeight(5)
+    text('Grid', width/2, 30);
+    textSize(25)
+
     textAlign(CENTER);
     stroke(0);
     strokeWeight(1)
@@ -160,6 +173,12 @@ class ButtonVisual {
     this.rand  = rand
   }
   draw() {
+    textSize(30)
+    fill(75, 0, 130);
+    strokeWeight(5)
+    text('Button', width/2, 30);
+    textSize(25)
+
     stroke(0)
     strokeWeight(5)
     textSize(30)
@@ -170,7 +189,7 @@ class ButtonVisual {
     fill(0);
     stroke('#00008B');
     rect(550, height/2-100, -500, 50);
-    fill(230);
+    fill('#00008B');
     rect(50, height/2-100, map(this.rand[0]/(this.rand[0]+this.rand[1])*100,0,100,50,550)-50, 50);
     fill(0);
     stroke('#CB2B92')
